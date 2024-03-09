@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Path para api 
     path("api/", include("apiUFC.api.urls")),
+
+    # Path para criação de token de autenticação, e para refresh
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view())
 ]

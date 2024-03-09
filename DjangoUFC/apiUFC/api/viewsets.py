@@ -44,27 +44,58 @@ class LutadorViewset(ModelViewSet):
 
             # Quantidade total de lutas
             lutas = 0
+            cartel = [0,0,0]
+            ultimaLuta = ''
 
-            # Itera sobre o JSON que contem todas as lutas, e para cada luta presente, + 1 no contador
+            # Itera sobre o JSON que contem todas as lutas, e para cada luta QUE ESTEJA ATUALIZADA calcula cartel e + 1 no contador de lutas
             for req in requisicaoJSON:
-    
-                lutas += 1
+
+                # Apenas lutas com resultados atualizados contam
+                if req['winner'] != '':
+
+                    # Salva a ultima luta
+                    if lutas == 0:
+                        ultimaLuta = req
+
+                    lutas += 1
+
+                    #Checa se o lutador salvo foi quem ganhou
+
+                    # Tive que incluir .strip() para remover espaços no inicil e no final das strings, devido a erros de formatação na API utilizada
+                    if req['winner'].strip() == nome.strip():
+                        cartel [0] += 1
+                    elif req ['winner'].strip() == 'none':
+                        cartel [2] += 1
+                    else:
+                        cartel [1] += 1
 
             # Seleciona a primeira luta (mais recente)
-            requisicaoJSON = requisicaoJSON[0]
+                    
+            if (ultimaLuta == ''):
+                # Para evitar erros, caso o lutador não possua nenhuma luta válida dentro da organização, para não retornar uma string vazia, retorna:
+                ultimaLuta = {
+                    "date": "",
+                    "event": "",
+                    "fighter_1": "",
+                    "fighter_2": "",
+                    "winner": "",
+                    "round": "",
+                    "method": ""
+                }
 
             # Associa cada falor do JSON a um valor que será salvo no db e retornado para o user
             dados_recebidos = {
                 "nome": nome,
+                "cartelNoUFC": f"{cartel[0]} - {cartel[1]} - {cartel[2]}",
                 "totalDeLutas": lutas,
                 "ultimaLuta": {
-                    "data" : requisicaoJSON['date'],
-                    "evento": requisicaoJSON['event'],
-                    "lutador1" : requisicaoJSON['fighter_1'],
-                    "lutador2" : requisicaoJSON['fighter_2'],
-                    "vencedor" : requisicaoJSON['winner'],
-                    "rounds" : requisicaoJSON['round'],
-                    "metodo" : requisicaoJSON['method'],
+                    "data" : ultimaLuta['date'],
+                    "evento": ultimaLuta['event'],
+                    "lutador1" : ultimaLuta['fighter_1'],
+                    "lutador2" : ultimaLuta['fighter_2'],
+                    "vencedor" : ultimaLuta['winner'],
+                    "rounds" : ultimaLuta['round'],
+                    "metodo" : ultimaLuta['method'],
                 }
             }
 

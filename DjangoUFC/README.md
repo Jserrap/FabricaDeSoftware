@@ -8,7 +8,7 @@
 # Objetivo da api:
 Consumir uma API, e forneçer ao usuário alguns dados sobre lutadores de UFC (Ultimate Fighting Championship), provendo dados como, nome, quantidades de lutas, e resultado de sua ultima luta.
 
-(!AVISO!) A API Utilizada para este projeto não aparenta estar completamente atualizada, de modo que lutas após o ufc 283 são visiveis, no entanto não possuem seu resultado. Infelizmente por ser a única API gratuita que eu encontrei que servisse para o propósito desse trabalho, decidi utiliza-la mesmo assim. Então, para testar a API e observar seu potencial completo, recomendo utilizar nomes de lutadores cuja sua ultima tenha sido antes deste evento, exemplo: Wanderlei Silva, Jorge Masvidal, Demetrious Johnson, Anderson Silva, Chael Sonnen, Daniel Cormier etc...
+(!AVISO!) A API Utilizada para este projeto não aparenta estar completamente atualizada, de modo que lutas após o ufc 283 são visiveis, no entanto não possuem seu resultado atualizado.Infelizmente por ser a única API gratuita que eu encontrei que servisse para o propósito desse trabalho, decidi utiliza-la mesmo assim. Então, para resolver isso, criei a aplicação de uma maneira que qualquer luta que esteja desatualizada seja ignorado, então, apenas os dados pre UFC 283 estão de fato disponiveis.
 
 # Como acessar?
 A API pode ser acessada na url https:000.0.0.0000/api/lutador (zeros apenas placeholder para o endereço do server).

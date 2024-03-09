@@ -5,4 +5,4 @@ class LutadorSerializer(ModelSerializer):
     class Meta:
         model = LutadorModel
         # Rows da tabela lutadorModel
-        fields = ['id', 'nome', 'totalDeLutas', 'ultimaLuta'] 
+        fields = ['id', 'nome', 'cartelNoUFC', 'totalDeLutas', 'ultimaLuta'] 

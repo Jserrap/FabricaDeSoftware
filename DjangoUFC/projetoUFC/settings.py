@@ -77,10 +77,14 @@ WSGI_APPLICATION = 'projetoUFC.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# CONFIGURAÇÃO DJANGO POSTGRES
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Db_APIUFC',
+        'USER': 'postgres',
+        'PASSWORD' : 'senha123',
+        'HOST' : 'localhost'
     }
 }
 

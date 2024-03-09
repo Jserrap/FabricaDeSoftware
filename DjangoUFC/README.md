@@ -3,6 +3,7 @@
 -djangorestframework
 -djangocorsheaders
 -djangorestframework-simplejwt
+...
 (lista completa no requirements.txt)
 
 # Objetivo da api:
@@ -41,3 +42,15 @@ Em seguida, a API retornará dois valores, um "refresh", e outro "access". A de 
 Authorization           Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5OTY4NTQzLCJpYXQiOjE3MDk5NjgyNDMsImp0aSI6ImQxNzU1NmM0Y2I5NDQzYTc4MzJkMjFkYTRlZTA4OGJiIiwidXNlcl9pZCI6Mn0.Q88sDlhyWXGh0jw0I3II00j4neexAIJduAyhcvmSQIw
 
 Após isso ser feito, você poderá acessar https:000.0.0.0000/api/lutador, no entanto a chave eventualmente expirará. Quando isso ocorrer, você pode ou repetir o processo mencionado acima, ou então, utilizando a chave "refresh" retornada anteriormente, visitar https:000.0.0.0000/token/refresh/ (POST), e passar o, na chave "Refresh" o valor, que assim te gerará uma nova chave, que poderá ser utilizada no header novamente.
+
+# Banco de Dados
+O banco de dados utilizado para este projeto foi o PostgreSQL, os dados de sua configuração estão no arquivo settings, na parte de DATABASES = {}. Está configurado da seguinte forma:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Db_APIUFC',
+        'USER': 'postgres',
+        'PASSWORD' : 'senha123',
+        'HOST' : 'localhost'
+    }
+}
